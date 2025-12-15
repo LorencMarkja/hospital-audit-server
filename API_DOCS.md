@@ -267,6 +267,42 @@ Possible errors
 - **409 Conflict** - same key reused with a different undo request**
 - **4500 Internal Server Error** - unexpected errors
 
+## Error Format
+
+Errors are returned as JSON objects with at least:
+
+    {
+      "error": "ERROR_CODE",
+      "message": "Human readable message"
+    }
+
+Examples:
+
+**Missing idempotency key (400):**
+
+
+    {
+      "error": "MISSING_IDEMPOTENCY_KEY",
+      "message": "Idempotency-Key header is required for idempotent operations"
+    }
+
+**Idempotency conflict (409):**
+
+    {
+      "error": "IDEMPOTENCY_CONFLICT",
+      "message": "Idempotency key reused with different request",
+      "idempotencyKey": "idem-123"
+    }
+
+**Validation error (400), e.g. for sign medication order:**
+
+
+    {
+      "error": "VALIDATION_ERROR",
+      "message": "clinicianId is required"
+    }
+
+
 ## Quick End-to-End Test Flow (cURL)
 
 You can use this sequence to exercise the whole flow manually.
