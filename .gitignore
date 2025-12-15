@@ -1,0 +1,49 @@
+########################
+# Maven build artifacts
+########################
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
+
+########################
+# IDE / Workspace files
+########################
+
+# IntelliJ IDEA
+*.iml
+.idea/
+*.ipr
+*.iws
+
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# VS Code
+.vscode/
+
+########################
+# OS / Misc
+########################
+.DS_Store
+Thumbs.db
+
+########################
+# H2 database files
+########################
+
+# H2 file DB created by: jdbc:h2:file:./data/hospital ...
+data/
+*.mv.db
+*.trace.db
+
+########################
+# Logs / temp
+########################
+logs/
+*.log
+hs_err_pid*
