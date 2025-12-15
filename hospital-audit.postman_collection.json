@@ -1,0 +1,117 @@
+{
+  "info": {
+    "name": "Hospital Audit Server",
+    "_postman_id": "bfbce1c0-0000-0000-0000-000000000000",
+    "description": "Basic manual tests for Hospital Audit Server.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/hospital/v1/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["hospital", "v1", "health"]
+        }
+      }
+    },
+    {
+      "name": "Discharge patient",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Idempotency-Key", "value": "discharge-1" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/hospital/v1/patients/42/discharge",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["hospital", "v1", "patients", "42", "discharge"]
+        }
+      }
+    },
+    {
+      "name": "Undo discharge",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Idempotency-Key", "value": "discharge-undo-1" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/hospital/v1/patients/42/discharge/undo",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["hospital", "v1", "patients", "42", "discharge", "undo"]
+        }
+      }
+    },
+    {
+      "name": "Sign order",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Idempotency-Key", "value": "sign-1" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"clinicianId\": \"dr.house\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/hospital/v1/patients/42/orders/ord-123/sign",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["hospital", "v1", "patients", "42", "orders", "ord-123", "sign"]
+        }
+      }
+    },
+    {
+      "name": "Undo sign order",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Idempotency-Key", "value": "sign-undo-1" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/hospital/v1/patients/42/orders/ord-123/sign/undo",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": [
+            "hospital",
+            "v1",
+            "patients",
+            "42",
+            "orders",
+            "ord-123",
+            "sign",
+            "undo"
+          ]
+        }
+      }
+    }
+  ]
+}
